@@ -1,0 +1,46 @@
+body{
+	margin: 0;
+}
+button{
+	position: absolute;
+	top: 350px;
+	left: 20px;
+}
+#bg{
+	background-image: url('images/bg.png');
+	height: 300px;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	background-position: 0 0;
+}
+#die1{
+	background-image: url('images/dice.png');
+	height: 64px;
+	width: 64px;
+}
+
+#die2{
+	background-image: url('images/dice.png');
+	height: 64px;
+	width: 64px;
+	background-position: -64px 0;
+}
+
+#run{
+	background-image: url('images/test.png');
+	height: 100px;
+	width: 100px;
+	background-size: 600px auto;
+	background-position: 0 0;
+	position: absolute;
+	top: 164px;
+	left: 20px;
+	/*border: 1px solid #ff0000;*/
+	background-attachment: scroll;
+	z-index: 2;
+}
+.right{
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

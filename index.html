@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DICE</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="run" onclick="runA()"></div>
+<div id="bg"></div>
+<br><br>
+<button onclick="dayNight()">Day/Night</button>
+<!-- <div id="die1"></div>
+<button onclick="roll()">Roll Dice</button>
+ --><br><br>
+
+<script>
+//var ctr=1;
+function roll(){
+	var die1 = document.getElementById('die1');
+	// die1.style.backgroundPosition = '-64px 0';
+	var rnd = Math.ceil(Math.random() * 6);
+	// console.log(rnd);
+	var x = (rnd-1)*64;
+	die1.style.backgroundPosition = '-'+x+'px 0';
+
+}
+
+var pos = 0;
+function runA(){
+	var run = document.getElementById('run');
+	// die1.style.backgroundPosition = '-64px 0';
+	pos = pos + 100;
+	if(pos>=600) pos=0;
+	// console.log(pos);
+	run.style.backgroundPosition = '-'+pos+'px 0';
+}
+
+
+//var a=setInterval(function(){runA()},100);
+
+
+document.addEventListener('keypress', logKey);
+var pos2;
+var bgpos;
+var a;
+function logKey(e) {
+	var run = document.getElementById('run');
+	var bg = document.getElementById('bg');
+	bgpos = parseInt(bg.style.backgroundPositionX) || 0; 
+	pos2 = parseInt(run.style.left) || 0;
+  // console.log(e.keyCode);
+  if(e.keyCode==100){
+  	run.classList.remove("right");
+  	pos2+=10;
+  	if(pos2>=250) 
+	{
+		pos2=250;
+	  	bgpos-=10;
+		bg.style.backgroundPositionX = bgpos+'px';
+	}
+	run.style.left=pos2+'px';
+  	// console.log(pos2);
+  	runA();
+  }
+  if(e.keyCode==97){
+  	run.classList.add("right");
+  	pos2-=10;
+  	if(pos2<=20) 
+	{
+		pos2=20;
+	  	bgpos+=10;
+		bg.style.backgroundPositionX = bgpos+'px';
+	}
+	run.style.left=pos2+'px';
+
+
+  	// console.log(pos2);
+  	runA();
+  }
+  if(e.keyCode==119){
+  	a = setInterval(function(){jump()},100);
+  }
+
+
+}
+
+function dayNight(){
+	var bg2 = document.getElementById('bg');
+	bg2pos = parseInt(bg.style.backgroundPositionY) || 0; 
+	console.log(bg2pos);
+	if(bg2pos==0){
+	bg2.style.backgroundPositionY ='-300px';
+	} else {
+		bg2.style.backgroundPositionY ='0';
+	}
+}
+
+var j=164;
+var jdir='up';
+
+function jump(){
+	var run = document.getElementById('run');
+	if(j<=50) jdir='down';
+	if(jdir=='up'){
+		j-=25;
+	}
+	if(jdir=='down'){
+		j+=25;
+//		clearInterval(jI);
+	if(j==164){
+		clearInterval(a);
+		jdir='up';
+	}
+	}
+	// console.log(j);
+	run.style.top=j+'px';
+}
+</script>
+
+</body>
+</html>
